@@ -1,5 +1,4 @@
 from auth import *  # Importing all functions from the auth.py file
-from funcs import *  # Importing all of my basic functions from the funcs.py file
 from scoring import *  # Importing all of functions from the scoring.py file
 import sys
 
@@ -12,7 +11,7 @@ def game(user0, user1):  # Asks the two users from the main program
     numberRounds = 0
     while numberRounds < 1: formatPrint("Enter the desiered number of rounds "); numberRounds = int(
         input())  # Asks for the number of rounds
-    for x in range(numberRounds * 2):  # Intiates loop
+    for x in range(numberRounds * 2):  # Initiates loop
         if isEven(playerCounter):
             player = 1  # Determines who is the current user
         else:
@@ -42,35 +41,34 @@ def game(user0, user1):  # Asks the two users from the main program
     pause()
 
 
-def menu():  # menu function is here in case needed for another time
-    inputValid = False
-    formatPrint("""1.See Scoreboard\n2.Login\n3.Sign Up""")  # Printing the options
-    while not inputValid:  # Verifies if the input has been validated
-        input0 = input("Enter Option: ")
-        try:
-            if int(input0) != 1 and int(input0) != 2 and int(input0) != 3:
-                print("Sorry, please try a valid number")
-            else:  # Verifies if the input is one of the valid numbers
-                inputValid = True  # Sets the input as valid
-        except ValueError:
-            if input0 == "":
-                sys.exit()
+# def menu():  # menu function is here in case needed for another time
+#    inputValid = False
+#    formatPrint("""1.See Scoreboard\n2.Login\n3.Sign Up""")  # Printing the options
+#    while not inputValid:  # Verifies if the input has been validated
+#        input0 = input("Enter Option: ")
+#        try:
+#           if int(input0) != 1 and int(input0) != 2 and int(input0) != 3:
+#                print("Sorry, please try a valid number")
+#            else:  # Verifies if the input is one of the valid numbers
+#                inputValid = True  # Sets the input as valid
+#        except ValueError:
+#            if input0 == "":
+#                sys.exit()
+#            else:
+#                print("Sorry, please try a valid number")
+#    return int(input0)
+
+def menu(input0):
+    while True:
+        if input0 == 1:
+            scoreboard()
+        elif input0 == 2:
+            user1, user2 = login()
+            if user1 == "" and user2 == "":
+                pass
             else:
-                print("Sorry, please try a valid number")
-    return int(input0)
-
-
-while True:
-    input0 = menu()
-    if input0 == 1:
-        scoreboard()
-    elif input0 == 2:
-        user1, user2 = login()
-        if user1 == "" and user2 == "":
-            pass
-        else:
-            game(user1, user2)
-    elif input0 == 3:
-        signUp()
-        formatPrint("Sign Up Successful! \nPlease Proceed to Login or Sign Up another user")
-        pause()
+                game(user1, user2)
+        elif input0 == 3:
+            sign_up()
+            formatPrint("Sign Up Successful! \nPlease Proceed to Login or Sign Up another user")
+            pause()

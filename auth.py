@@ -44,20 +44,20 @@ def login():
     return(user1, user2)  # Sends the name of both users to the main program
 
 
-def signUp():
+def sign_up():
     f = open("auth.csv", "a+")  # Open the CSV storing the usernames and passwords in read mode to verify the username hasn't already been used
     Valid = False
     Valid2 = True
 
     while not Valid:
-        user = str(input("Enter Desiered Username: "))
-        passw = str(input("Enter Desiered Password: "))
+        user = str(input("Enter Desired Username: "))
+        passw = str(input("Enter Desired Password: "))
         userpass = user + ", " + passw + "\n"
         for line in f.readlines():  # Moves the read-head down a line
             temp = line.split(",")  # Splits the username-password combination
             userline = temp[0]  # Removes the password
             if(userline == user):  # Compares the chosen username with the existing one
-                print("Desiered Username is already user")
+                print("Desired Username is already user")
                 Valid = False
                 Valid2 = False
                 f.seek(0)

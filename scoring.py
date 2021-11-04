@@ -1,6 +1,6 @@
-from funcs import *  # Imports the dice rolling function and my custom line replacing function
 import os
-import linecache
+
+from funcs import *  # Imports the dice rolling function and my custom line replacing function
 
 
 def scoring(roll1, roll2, playerScore):
