@@ -1,0 +1,40 @@
+function Login() //The function will be called by the menu function
+	f = openRead("auth.txt") //Opens the file where the credentials are stored
+	found1 = False
+	found2 = False
+	line = "NfU56T"
+	
+	while NOT found1 
+		user1 = input("Enter Player 1 username: ") //Asks for input
+        pass1 = input("Enter Player 1 password: ")
+        userpass1 = user1 + ", " + pass1 //Formats the credentials for the program to compare to the format in the file
+		while NOT f.endOfFile() //Prevents the program from being stuck if the credentials aren't found
+			if line == userpass1 //Checks whether the credentials have been found
+				print("\n Welcome, " + user1) //Outputs a message for the user to see
+				found1 = True //Tells the program that credentials have been found
+				break
+			endif
+		endwhile
+		if NOT found1
+			print("\n Please try again")//Outputs a message for the user to see
+		endif
+	endwhile.
+	
+	while NOT found2 // Repeats the entire section for the second user
+		user2 = input("Enter Player 1 username: ")
+        pass2 = input("Enter Player 1 password: ")
+        userpass2 = user2 + ", " + pass2
+		while NOT f.endOfFile()
+			if line == userpass1
+				print("\n Welcome, " + user1)
+				found2 = True
+				break
+			endif
+		endwhile
+		if NOT found2
+			print("\n Please try again")
+		endif
+	endwhile
+	
+	return user1, user2
+endFunction
